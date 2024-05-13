@@ -10,9 +10,10 @@ const UserState = (props) => {
 
     const navigate = useNavigate()
 
-    const [userDetails, setUserDetails] = useState(null)
+    const [userDetails, setUserDetails] = useState()
     const [reloadUsers, setReloadUsers] = useState(true)
     const [selectedChat, setSelectedChat] = useState(null);
+    const [notification, setNotification] = useState([])
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -21,14 +22,14 @@ const UserState = (props) => {
             navigate("/")
         }
 
-    }, [navigate]);
+    }, []);
 
 
     //signup user
     const signUp = async (input) => {
         try {
             const { cpassword, ...postData } = input;
-            console.log(postData)
+            //console.log(postData)
             const response = await axios.post("/api/user", postData)
             return response
         } catch (error) {
@@ -104,7 +105,7 @@ const UserState = (props) => {
     }
 
     const addUserToGroup = async (input) => {
-        console.log(input)
+        //console.log(input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.put(`/api/chats/groupadd`, {
@@ -123,7 +124,7 @@ const UserState = (props) => {
     }
 
     const removeUserFromGroup = async (input) => {
-        console.log(input)
+        //console.log(input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.put(`/api/chats/groupremove`, {
@@ -142,7 +143,7 @@ const UserState = (props) => {
     }
 
     const renameGroup = async (input) => {
-        console.log(input)
+        //console.log(input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.put(`/api/chats/renamegroup`, {
@@ -161,7 +162,7 @@ const UserState = (props) => {
     }
 
     const leaveGroup = async (input) => {
-        console.log("input", input)
+        //console.log("input", input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.put(`/api/chats/leavegroup`, input, {
@@ -178,7 +179,7 @@ const UserState = (props) => {
 
 
     const sendMessage = async (input) => {
-        console.log(input)
+        //console.log(input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.post(`/api/message`, input, {
@@ -194,7 +195,7 @@ const UserState = (props) => {
     }
 
     const getMessage = async (input) => {
-        console.log("input", input)
+        //console.log("input", input)
         try {
             const token = JSON.parse(localStorage.getItem("userInfo")).token
             const response = await axios.get(`/api/message/${input.chatId}`, {
@@ -213,7 +214,7 @@ const UserState = (props) => {
     return (
         <>
             <UserContext.Provider
-                value={{ userDetails, signUp, logIn, searchUsers, addChatUser, getChatUser, reloadUsers, setReloadUsers, createChatGroup, selectedChat, setSelectedChat, renameGroup, addUserToGroup, removeUserFromGroup, leaveGroup, sendMessage, getMessage }}>
+                value={{ userDetails, signUp, logIn, searchUsers, addChatUser, getChatUser, reloadUsers, setReloadUsers, createChatGroup, selectedChat, setSelectedChat, renameGroup, addUserToGroup, removeUserFromGroup, leaveGroup, sendMessage, getMessage, notification, setNotification }}>
                 {props.children}
             </UserContext.Provider>
         </>

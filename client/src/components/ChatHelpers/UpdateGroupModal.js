@@ -30,7 +30,7 @@ const UpdateGroupModal = ({ children }) => {
 
     const handleAddChat = async (elem) => {
         const response = await addUserToGroup({ "chatId": selectedChat._id, "userId": elem })
-        console.log(response)
+        //console.log(response)
         if (response.status === 400) {
             toast({
                 title: "Only Admins Can Add !",
@@ -43,7 +43,7 @@ const UpdateGroupModal = ({ children }) => {
 
     const handleRemove = async (elem) => {
         const response = await removeUserFromGroup({ "chatId": selectedChat._id, "userId": elem })
-        console.log(response)
+        //console.log(response)
         if (response.status === 400) {
             toast({
                 title: "Only Admin Can Remove !",
@@ -57,7 +57,7 @@ const UpdateGroupModal = ({ children }) => {
 
     const handleRename = async () => {
         const response = await renameGroup(addallUsers)
-        console.log(response)
+        //console.log(response)
         if (response.status === 400) {
             toast({
                 title: "Only Admin Can Rename !",
@@ -70,7 +70,7 @@ const UpdateGroupModal = ({ children }) => {
 
     const handleLeaveGroup = async () => {
         const response = await leaveGroup({ chatId: selectedChat._id })
-        console.log(response)
+        //console.log(response)
         setSelectedChat(false)
     }
 

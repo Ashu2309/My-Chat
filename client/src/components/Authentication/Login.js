@@ -16,7 +16,7 @@ const Login = () => {
 
     const handleSubmit = async () => {
         const response = await logIn(input)
-        console.log(response)
+        //console.log(response)
         if (response && response.status === 200) {
             localStorage.setItem("userInfo", JSON.stringify(response.data))
             toast({
@@ -42,7 +42,7 @@ const Login = () => {
     const handleInput = (e) => {
         setinput({ ...input, [e.target.name]: e.target.value })
     }
-    console.log(input)
+    //console.log(input)
     return (
         <>
             <VStack height="30vh" justifyContent="space-between">

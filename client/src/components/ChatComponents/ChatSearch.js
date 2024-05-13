@@ -41,10 +41,7 @@ const ChatSearch = ({ searchModal, setSearchModal }) => {
     }, [keyword])
 
     const handleAddChat = async (elem) => {
-        console.log(elem)
         const response = await addChatUser(elem);
-        console.log(response)
-
     }
 
 

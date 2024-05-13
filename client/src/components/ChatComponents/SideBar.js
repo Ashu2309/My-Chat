@@ -19,7 +19,7 @@ const SideBar = () => {
                 const response = await getChatUser();
                 if (response && response.data) {
                     setAllChatUsers(response.data);
-                    console.log(response.data);
+                    //console.log(response.data);
                 } else {
                     console.error("No data returned from getChatUser");
                 }
@@ -34,7 +34,7 @@ const SideBar = () => {
         setloggedUser(JSON.parse(localStorage.getItem("userInfo")));
     }, [selectedChat, reloadUsers]);
 
-    console.log("selectedChat", selectedChat)
+    //console.log("selectedChat", selectedChat)
 
     const selectChat = (e) => {
         setSelectedChat(e)
@@ -57,17 +57,18 @@ const SideBar = () => {
                             <Box display="flex" alignItems="center" padding="10px" marginBottom="10px" cursor="pointer" onClick={(e) => selectChat(elem)}>
                                 <Avatar src={group_img} marginRight={'7px'} />
                                 <VStack alignItems="start">
-                                    <Text>{elem.chatName}</Text>
-                                    {/* <Text>{elem.latestMessage.content ? elem.latestMessage.content : 'No recent message'}</Text> */}
+                                    <Text fontWeight="600">{elem.chatName}</Text>
+                                    <Text>{elem?.latestMessage?.content ? elem?.latestMessage?.content : 'No recent message'}</Text>
                                 </VStack>
                             </Box>
                         ) : (
                             <Box display="flex" alignItems="center" padding="10px" marginBottom="10px" cursor="pointer" onClick={(e) => selectChat(elem)}>
                                 <Avatar src={getSender(loggedUser, elem.users)?.pic} marginRight={'7px'} />
                                 <VStack alignItems="start">
-                                    <Text>{getSender(loggedUser, elem.users)?.name}</Text>
-                                    <Text fontSize="xs">{getSender(loggedUser, elem.users)?.email}</Text>
-                                    {/* <Text>{elem.latestMessage}</Text> */}
+                                    <Text fontWeight="600" marginRight="5px">{getSender(loggedUser, elem.users)?.name}</Text>
+
+                                    <Text color="green">{elem?.latestMessage?.content ? elem?.latestMessage?.content : 'No recent message'}</Text>
+
                                 </VStack>
                             </Box>
                         )}

@@ -6,12 +6,15 @@ import { useState } from 'react'
 import MyModal from '../ChatHelpers/MyModal'
 import ChatSearch from '../../components/ChatComponents/ChatSearch'
 import { useNavigate } from 'react-router-dom'
+import { getSender } from '../ConfigLogics/ChatLogics'
+
+
 
 
 
 const TopBar = () => {
     const navigate = useNavigate()
-    const { userDetails } = useContext(UserContext)
+    const { userDetails, notification, setNotification, setSelectedChat } = useContext(UserContext)
     const [profileModal, setProfileModal] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const toast = useToast()
@@ -37,15 +40,29 @@ const TopBar = () => {
                             <Heading>Chat - App</Heading>
                             <Box display="flex" gap={2}>
                                 <Menu>
-                                    <MenuButton>
-                                        <BellIcon fontSize={40} color={'orange'} />
+                                    <MenuButton position="relative">
+                                        <BellIcon fontSize={40} color={'orange'}>
+                                        </BellIcon>
+                                        {!notification.length ? (<></>) :
+                                            <span className='add_pop'>{notification.length}</span>
+                                        }
                                     </MenuButton>
                                     <MenuList>
-                                        <MenuItem>Download</MenuItem>
-                                        <MenuItem>Create a Copy</MenuItem>
-                                        <MenuItem>Mark as Draft</MenuItem>
-                                        <MenuItem>Delete</MenuItem>
-                                        <MenuItem>Attend a Workshop</MenuItem>
+                                        {!notification.length && <>
+                                            <MenuItem>No Messages</MenuItem>
+                                        </>}
+                                        {notification.map(notif => (
+                                            <MenuItem key={notif._id} onClick={() => {
+                                                setSelectedChat(notif.chat);
+                                                setNotification(notification.filter((n) => n !== notif))
+                                            }
+                                            }>
+                                                {notif.chat.isGroupChat ? `New Message in ${notif.chat.chatName}`
+                                                    :
+                                                    `New Message from ${getSender(userDetails, notif.chat.users)?.name}`
+                                                }
+                                            </MenuItem>
+                                        ))}
                                     </MenuList>
                                 </Menu>
 

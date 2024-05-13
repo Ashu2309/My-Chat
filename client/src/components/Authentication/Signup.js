@@ -9,7 +9,7 @@ const Signup = () => {
 
     const handleSubmit = async () => {
         const response = await signUp(input)
-        console.log(response)
+        //console.log(response)
     }
 
     const toast = useToast({
@@ -44,10 +44,10 @@ const Signup = () => {
                 body: data
             }).then((res) => res.json()).then(data => {
                 setinput({ ...input, pic: data.url.toString() });
-                console.log(data.url.toString())
+                //console.log(data.url.toString())
                 setLoading(false)
             }).catch(error => {
-                console.log(error)
+                //console.log(error)
                 setLoading(error)
             })
         } else {
@@ -60,7 +60,7 @@ const Signup = () => {
     const handleInput = (e) => {
         setinput({ ...input, [e.target.name]: e.target.value })
     }
-    console.log(input)
+    //console.log(input)
     return (
         <>
             <VStack height="55vh" justifyContent="space-between">
