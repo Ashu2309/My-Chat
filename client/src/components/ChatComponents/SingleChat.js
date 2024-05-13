@@ -13,7 +13,7 @@ import Lottie from "react-lottie"
 import animationData from "../../Assets/Img/animations/typing.json"
 import ScrollableChats from "./ScrollableChats";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = process.env.REACT_APP_PORT;
 var socket, selectedChatCompare;
 
 const SingleChat = ({ selectedChat, setSelectedChat }) => {
