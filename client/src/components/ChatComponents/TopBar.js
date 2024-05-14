@@ -37,7 +37,7 @@ const TopBar = () => {
                     <>
                         <Box display="flex" justifyContent={'space-between'} padding="10px" backgroundColor={'#f6f4f4'} className='topbar' >
                             <Button variant={'ghost'} onClick={() => setSearchModal(true)} > Search <Search2Icon margin={2} /></Button>
-                            <Heading>Chat - App</Heading>
+                            <Heading>Chat-Hub</Heading>
                             <Box display="flex" gap={2}>
                                 <Menu>
                                     <MenuButton position="relative">

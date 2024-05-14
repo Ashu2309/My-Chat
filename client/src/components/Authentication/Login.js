@@ -58,7 +58,7 @@ const Login = () => {
                     </InputGroup>
                 </FormControl>
                 <Button variant='solid' colorScheme='blue' w='100%' onClick={handleSubmit}>Login</Button>
-                <Button variant='solid' colorScheme='red' w='100%' onClick={() => { setinput({ "email": "guest@example.com", "password": "123456" }) }}>Guest Login</Button>
+                <Button variant='solid' colorScheme='green' w='100%' onClick={() => { setinput({ "email": "guest@example.com", "password": "123456" }) }}>Guest Login</Button>
             </VStack >
         </>
     )

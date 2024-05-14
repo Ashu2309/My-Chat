@@ -75,12 +75,7 @@ const ChatSearch = ({ searchModal, setSearchModal }) => {
 
                 </DrawerBody>
 
-                <DrawerFooter>
-                    <Button variant='outline' mr={3} onClick={handleCloseModal}>
-                        Cancel
-                    </Button>
-                    <Button colorScheme='blue'>Save</Button>
-                </DrawerFooter>
+
             </DrawerContent>
         </Drawer>
     );
