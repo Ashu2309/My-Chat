@@ -14,7 +14,7 @@ import { getSender } from '../ConfigLogics/ChatLogics'
 
 const TopBar = () => {
     const navigate = useNavigate()
-    const { userDetails, notification, setNotification, setSelectedChat } = useContext(UserContext)
+    const { userDetails, notification, setNotification, setSelectedChat, selectedChat } = useContext(UserContext)
     const [profileModal, setProfileModal] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const toast = useToast()
@@ -24,8 +24,10 @@ const TopBar = () => {
     }
 
     const handleLogout = () => {
+        setSelectedChat(null)
         localStorage.removeItem("userInfo");
         navigate("/")
+
     }
     return (
         <>
