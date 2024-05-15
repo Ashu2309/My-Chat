@@ -39,7 +39,7 @@ const Signup = () => {
             data.append("file", photo)
             data.append("upload_preset", "chat-app")
             data.append("cloud_name", "ashutosh-coder")
-            fetch("https:/api.cloudinary.com/v1_1/ashutosh-coder/image/upload", {
+            fetch("https://api.cloudinary.com/v1_1/ashutosh-coder/image/upload", {
                 method: "post",
                 body: data
             }).then((res) => res.json()).then(data => {
