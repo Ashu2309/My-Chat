@@ -16,13 +16,14 @@ const UserState = (props) => {
     const [notification, setNotification] = useState([])
 
     useEffect(() => {
+        console.log(reloadUsers, "------------")
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         setUserDetails(userInfo);
         if (!userInfo) {
             navigate("/")
         }
 
-    }, []);
+    }, [navigate]);
 
 
     //signup user
@@ -68,7 +69,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             console.log(error)
@@ -97,7 +98,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             console.log(error)
@@ -116,7 +117,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }
@@ -135,7 +136,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }
@@ -154,7 +155,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }
@@ -170,7 +171,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }
@@ -187,7 +188,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }
@@ -203,7 +204,7 @@ const UserState = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setReloadUsers(true)
+            setReloadUsers(!reloadUsers);
             return response
         } catch (error) {
             return { "status": 400, "message": error }

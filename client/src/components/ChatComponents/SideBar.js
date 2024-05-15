@@ -28,9 +28,9 @@ const SideBar = () => {
             }
         };
 
-        if (selectedChat !== null || reloadUsers) {
-            fetchUserChats();
-        }
+        // if (selectedChat !== null || reloadUsers) {
+        fetchUserChats();
+        // }
         setloggedUser(JSON.parse(localStorage.getItem("userInfo")));
     }, [selectedChat, reloadUsers]);
 

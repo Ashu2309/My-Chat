@@ -15,6 +15,13 @@ const Login = () => {
     const { logIn } = useContext(UserContext)
 
     const handleSubmit = async () => {
+        if (input.email === "" || input.password === "") {
+            toast({
+                title: "Fill All Field!",
+                status: "error"
+            })
+            return;
+        }
         const response = await logIn(input)
         //console.log(response)
         if (response && response.status === 200) {

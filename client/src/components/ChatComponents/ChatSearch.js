@@ -6,7 +6,7 @@ const ChatSearch = ({ searchModal, setSearchModal }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [modalOpen, setModalOpen] = useState(false);
     const [keyword, setKeyword] = useState("")
-    const { searchUsers, addChatUser } = useContext(UserContext)
+    const { searchUsers, addChatUser, setReloadUsers, reloadUsers } = useContext(UserContext)
     const [allUsers, setAllUsers] = useState([])
 
 
@@ -42,6 +42,7 @@ const ChatSearch = ({ searchModal, setSearchModal }) => {
 
     const handleAddChat = async (elem) => {
         const response = await addChatUser(elem);
+
     }
 
 

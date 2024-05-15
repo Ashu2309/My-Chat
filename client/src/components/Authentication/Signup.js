@@ -8,8 +8,25 @@ const Signup = () => {
     const { signUp } = useContext(UserContext)
 
     const handleSubmit = async () => {
+        if (input.name === "" || input.email === "" || input.password === "" || input.cpassword === "" || input.pic === "") {
+            toast({
+                title: "Fill All Field!",
+                status: "error"
+            })
+            return;
+        }
         const response = await signUp(input)
-        //console.log(response)
+        if (response && response.status === 200) {
+            toast({
+                title: "Account Created Successfully!",
+                status: "success"
+            })
+        } else {
+            toast({
+                title: "Failed To Create Account !",
+                status: "error"
+            })
+        }
     }
 
     const toast = useToast({
